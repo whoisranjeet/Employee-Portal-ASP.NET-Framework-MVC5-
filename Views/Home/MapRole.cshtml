@@ -1,0 +1,27 @@
+﻿@model EMS.Models.EmployeesDM
+
+@{
+    ViewBag.Title = "Map Role";
+}
+
+<h2>Assign Role to Employee</h2>
+@using (Html.BeginForm("MapRole","Home",FormMethod.Post))
+{
+<div class="form-horizontal">
+
+    <table class="table">
+        <tr>
+            <td><h4 class="text-primary">Employee Name</h4></td>
+            <td><h4>@Html.DropDownListFor(model => model.Id, ViewBag.empList as SelectList, "Select Employee", new { @class = "btn btn-default" })</h4></td>
+        </tr>
+        <tr>
+            <td><h4 class="text-primary">Role</h4></td>
+            <td><h4>@Html.DropDownListFor(model => model.UsersDM.RolesDM.Id, ViewBag.roleList as SelectList, "Select Role", new { @class = "btn btn-default" })</h4></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Go" class="btn btn-default" /></td>
+        </tr>
+    </table>
+</div>
+}

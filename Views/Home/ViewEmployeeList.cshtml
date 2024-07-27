@@ -1,0 +1,80 @@
+﻿@model IEnumerable<EMS.Models.EmployeesDM>
+
+@{
+    ViewBag.Title = "Employees List";
+}
+
+<h2>All Employees</h2>
+
+<p>
+    @Html.ActionLink("Add New Employee", "AddEmployee", "Home")
+</p>
+
+@if (Model == null)
+{
+    <div class="form-horizontal">
+        <div class="control-label col-md-2">
+            <p class="text-danger">
+                No Data Found!!!
+            </p>
+        </div>
+    </div>
+}
+
+<table class="table">
+    @if (Model != null)
+    {
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Firstname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lastname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mobile)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Emailid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Department)
+            </th>
+        </tr>
+    }
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Firstname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lastname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mobile)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Emailid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department)
+            </td>
+        </tr>
+    }
+
+</table>
+@Html.ActionLink("Back to Dashboard", "Dashboard", "Home")

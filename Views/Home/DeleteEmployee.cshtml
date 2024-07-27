@@ -1,0 +1,120 @@
+﻿@model EMS.Models.EmployeesDM
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete Employee Data</h2>
+
+@using (Html.BeginForm("DeleteEmployee", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Id, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Id, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Go" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+    <h4 class="text-danger">@ViewBag.IsSuccess</h4>
+}
+
+
+@if (Model != null)
+{
+    using (Html.BeginForm())
+    {
+        <div class="form-horizontal">
+            <hr />
+            <h4>
+                @Html.DisplayFor(model => model.Firstname)
+                @Html.DisplayFor(model => model.Lastname)
+            </h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Id)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Id)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Firstname)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Firstname)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Lastname)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Lastname)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Mobile)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Mobile)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Emailid)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Emailid)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Address)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Address)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Department)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Department)
+                </dd>
+
+            </dl>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <div class="form-group">
+                        @Html.ActionLink("Back to Dashboard", "Dashboard")
+                        @Html.ActionLink("Delete", "Delete", new { id = Model.Id }, new { @class = "text-danger", @onclick = "return confirm('Are you sure?')" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+
+<div>
+    @Html.ActionLink("Back to Dashboard", "Dashboard")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
